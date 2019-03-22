@@ -1,6 +1,6 @@
 <?php
-$cname=request()->input('username');
-$password=request()->input('password');
+$cname=$_POST['username'];
+$password=$_POST['password'];
 $data=[
     'username'=>$cname,
     'password'=>$password
