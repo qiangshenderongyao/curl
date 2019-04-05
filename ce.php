@@ -17,12 +17,13 @@ $data=openssl_encrypt(json_encode($json),$method,$passwd,false,$iv);
 $api_param=[];
 $api_param['data']=$data;
 ksort($json);
+//把参数转换为a=?&b=?
 $li=http_build_query($json);
-$sign_atr=$li.'&app_key='.$app_key;
+$sign_atr=$sign_atr.'&app_key='.$app_key;
 //生成签名
 $sign=md5($sign_atr);
 //请求数据中加签名
-$api_param['aign']=$sign;
+$api_param['sign']=$sign;
 //创建新的curl资源
 $ch=curl_init();
 //设置url和相应的选项
@@ -31,12 +32,12 @@ curl_setopt($ch,CURLOPT_POST,1);
 curl_setopt($ch,CURLOPT_POSTFIELDS,http_build_query($api_param));
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
 $res=curl_exec($ch);    //接收响应
-if(curl_errno($ch)){
-    var_dump(curl_errno($ch));
-    var_dump(curl_error());
-}
-$api_arr=json_encode($data,true);
-print_r($api_arr);
+//if(curl_errno($ch)){
+//    var_dump(curl_errno($ch));
+//    var_dump(curl_error());
+//}
+//$api_arr=json_encode($data,true);
+//print_r($api_arr);
 //parse_str($li,$datta)解密
 
 
