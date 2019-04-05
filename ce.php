@@ -1,22 +1,21 @@
 <?php
 $new=time();
 $app_id=md5(1);
-$app_key=md5('233333');
+$app_key=md5('594188');
 $url="http://1807.96myshop.cn/mylogin";
 $json=[
     'name'=>'枪神',
-    'pad'=>'233333',
+    'pad'=>'594188',
     'app_id'=>$app_id
 ];
 $method = 'AES-128-CBC';//加密方法
 $passwd = 'password';//加密密钥
 $salt='xxxxx';
 $iv=substr(md5($new.$salt),5,16);
-$data=openssl_encrypt($json,$method,$passwd,OPENSSL_RAW_DATA,$iv);
-$post_data=base64_encode($data);
+$data=openssl_encrypt(json_encode($json),$method,$passwd,OPENSSL_RAW_DATA,$iv);
 //数据加密
 $api_param=[];
-$api_param['data']=$post_data;
+$api_param['data']=$data;
 ksort($json);
 $li=http_build_query($json);
 $sign_atr=$li.'&app_key='.$app_key;
