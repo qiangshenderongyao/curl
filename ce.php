@@ -29,7 +29,7 @@ $ch=curl_init();
 //设置url和相应的选项
 curl_setopt($ch,CURLOPT_URL,$url);
 curl_setopt($ch,CURLOPT_POST,1);
-curl_setopt($ch,CURLOPT_POSTFIELDS,http_build_query($api_param));
+curl_setopt($ch,CURLOPT_POSTFIELDS,$api_param);
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
 $res=curl_exec($ch);    //接收响应
 var_dump($res);
