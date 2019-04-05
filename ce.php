@@ -8,6 +8,7 @@ $json=[
     'pad'=>'594188',
     'app_id'=>$app_id
 ];
+print_r($json);
 $method = 'AES-128-CBC';//加密方法
 $passwd = 'password';//加密密钥
 $salt='xxxxx';
