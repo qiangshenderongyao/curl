@@ -19,7 +19,7 @@ $api_param['data']=$data;
 ksort($json);
 //把参数转换为a=?&b=?
 $li=http_build_query($json);
-$sign_atr=$sign_atr.'&app_key='.$app_key;
+$sign_atr=$li.'&app_key='.$app_key;
 //生成签名
 $sign=md5($sign_atr);
 //请求数据中加签名
