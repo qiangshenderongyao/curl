@@ -2,7 +2,7 @@
 $new=time();
 $app_id=md5(1);
 $app_key=md5('594188');
-
+/*
 $url="http://1807.96myshop.cn/mylogin";
 $json=[
     'name'=>'枪神',
@@ -41,7 +41,7 @@ if(curl_errno($ch)){
 }
 //$api_arr=json_encode($data,true);
 //print_r($api_arr);
-//parse_str($li,$datta)解密
+//parse_str($li,$datta)解密*/
 
 
 ?>
