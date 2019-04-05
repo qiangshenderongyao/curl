@@ -2,7 +2,7 @@
 $new=time();
 $app_id=md5(1);
 $app_key=md5('594188');
-echo $app_key;
+
 $url="http://1807.96myshop.cn/mylogin";
 $json=[
     'name'=>'枪神',
