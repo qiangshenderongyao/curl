@@ -12,7 +12,7 @@ $method = 'AES-128-CBC';//加密方法
 $passwd = 'password';//加密密钥
 $salt='xxxxx';
 $iv=substr(md5($new.$salt),5,16);
-$data=openssl_encrypt(json_encode($json),$method,$passwd,OPENSSL_RAW_DATA,$iv);
+$data=openssl_encrypt(json_encode($json),$method,$passwd,false,$iv);
 //数据加密
 $api_param=[];
 $api_param['data']=$data;
