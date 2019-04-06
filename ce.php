@@ -37,7 +37,6 @@ $res=curl_exec($ch);    //接收响应
 var_dump($res);
 if(curl_errno($ch)){
     var_dump(curl_errno($ch));
-    var_dump(curl_error());
 }
 //$api_arr=json_encode($data,true);
 //print_r($api_arr);
