@@ -3,13 +3,13 @@ $new=time();
 $app_id=md5(1);
 $app_key=md5('594188');
 
-$url="http://1807.96myshop.cn/mylogin";
+//$url="http://1807.96myshop.cn/mylogin";
+$url="http://96cms.cn/mylogin";
 $json=[
     'name'=>'枪神',
     'pad'=>'594188',
     'app_id'=>$app_id
 ];
-
 $method = 'AES-128-CBC';//加密方法
 $passwd = 'password';//加密密钥
 $salt='xxxxx';
