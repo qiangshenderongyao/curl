@@ -3,8 +3,8 @@ $new=time();
 $app_id=md5(1);
 $app_key=md5('594188');
 
-//$url="http://1807.96myshop.cn/mylogin";
-$url="http://96cms.cn/mylogin";
+$url="http://1807.96myshop.cn/ce";
+//$url="http://96cms.cn/mylogin";
 $json=[
     'name'=>'枪神',
     'pad'=>'594188',
