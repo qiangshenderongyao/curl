@@ -4,7 +4,7 @@ $app_id=md5(1);
 $app_key=md5('594188');
 
 $url="http://1807.96myshop.cn/ceshi";
-//$url="http://96cms.cn/mylogin";
+//$url="http://96cms.cn/ceshi";
 $json=[
     'name'=>'枪神',
     'pad'=>'594188',
@@ -34,12 +34,12 @@ curl_setopt($ch,CURLOPT_POST,1);
 curl_setopt($ch,CURLOPT_POSTFIELDS,$api_param);
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
 $res=curl_exec($ch);    //接收响应
-//var_dump($res);
+var_dump($res);
 if(curl_errno($ch)){
     var_dump(curl_errno($ch));
 }
 $api_arr=json_encode($res,true);
-print_r($api_arr);
+var_dump($api_arr);
 //parse_str($li,$datta)解密
 
 
