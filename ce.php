@@ -3,7 +3,7 @@ $new=time();
 $app_id=md5(1);
 $app_key=md5('594188');
 
-$url="http://1807.96myshop.cn/ce";
+$url="http://1807.96myshop.cn/ceshi";
 //$url="http://96cms.cn/mylogin";
 $json=[
     'name'=>'枪神',
