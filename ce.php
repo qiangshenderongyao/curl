@@ -34,7 +34,7 @@ curl_setopt($ch,CURLOPT_POST,1);
 curl_setopt($ch,CURLOPT_POSTFIELDS,$api_param);
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
 $res=curl_exec($ch);    //接收响应
-//var_dump($res);die;
+print_r($res);die;
 if(curl_errno($ch)){
     var_dump(curl_errno($ch));
 }
