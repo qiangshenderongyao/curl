@@ -34,12 +34,12 @@ curl_setopt($ch,CURLOPT_POST,1);
 curl_setopt($ch,CURLOPT_POSTFIELDS,$api_param);
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
 $res=curl_exec($ch);    //接收响应
-var_dump($res);
+//var_dump($res);
 if(curl_errno($ch)){
     var_dump(curl_errno($ch));
 }
-//$api_arr=json_encode($data,true);
-//print_r($api_arr);
+$api_arr=json_encode($data,true);
+print_r($api_arr);
 //parse_str($li,$datta)解密
 
 
