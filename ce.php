@@ -3,8 +3,8 @@ $new=time();
 $app_id=md5(1);
 $app_key=md5('594188');
 
-$url="http://1807.96myshop.cn/ceshi";
-//$url="http://96cms.cn/ceshi";
+//$url="http://1807.96myshop.cn/ceshi";
+$url="http://96cms.cn/ceshi";
 $json=[
     'name'=>'枪神',
     'pad'=>'594188',
@@ -34,12 +34,24 @@ curl_setopt($ch,CURLOPT_POST,1);
 curl_setopt($ch,CURLOPT_POSTFIELDS,$api_param);
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
 $res=curl_exec($ch);    //接收响应
-print_r($res);die;
+//print_r($res);die;
 if(curl_errno($ch)){
     var_dump(curl_errno($ch));
 }
-$api_arr=json_encode($res,true);
-var_dump($api_arr);
+$api_arr=json_decode($res,true);
+//var_dump($api_arr);
+//echo '<pre />';
+$date=$api_arr['data'];
+$decrypt_data=openssl_decrypt($date,'AES-128-CBC','password',false,'0614668812076688');
+$api_result=json_decode($decrypt_data,true);
+ksort($api_result);
+$sign=md5(http_build_query($api_result).'&app_key='.$app_id);
+//var_dump($sign);die;
+if($sign==$api_arr['sign']){
+    echo 'ok';
+}else{
+    echo '被修改过';
+}
 //parse_str($li,$datta)解密
 
 
