@@ -1,4 +1,5 @@
 <?php
+//测试版
 error_reporting(E_ALL);
 //$str='012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789';
 //openssl_public_encrypt($str,$encrypt_data,file_get_contents(__DIR__.'/pub.key'),OPENSSL_PKCS1_PADDING);
@@ -6,9 +7,9 @@ function rsaEncrypt($str){
     $i=0;
     $all='';
     while ($sub_str=substr($str,$i,117)){
-       openssl_public_encrypt($sub_str,$encrypt_data,file_get_contents(__DIR__.'/pub.key'),OPENSSL_PKCS1_PADDING);
-       $all .=base64_encode($encrypt_data);
-       $i+=117;
+        openssl_public_encrypt($sub_str,$encrypt_data,file_get_contents(__DIR__.'/pub.key'),OPENSSL_PKCS1_PADDING);
+        $all .=base64_encode($encrypt_data);
+        $i+=117;
     }
     return $all;
 }
@@ -34,28 +35,18 @@ function rsaDecrypt($encrypt_str){
 $new=time();
 $app_id=md5(1);
 $app_key=md5('594188');
-
 //$url="http://1807.96myshop.cn/ceshi";
 $url="http://96cms.cn/ceshi";
-//$json=[
-//    'name'=>'枪神',
-//    'pad'=>'594188',
-//    'app_id'=>$app_id
-//];
+$json=[
+    'name'=>'枪神',
+    'pad'=>'594188',
+    'app_id'=>$app_id
+];
 $method = 'AES-128-CBC';//加密方法
 $passwd = 'password';//加密密钥
 $salt='xxxxx';
 //$iv=substr(md5($new.$salt),5,16);
 //$data=openssl_encrypt(json_encode($json),$method,$passwd,false,'0614668812076688');
-$login_url='http://1807.96myshop.cn/ceshi/uploadimg';
-//$login_url='http://96cms.cn/ceshi/uploadimg';
-$img_path=__DIR__.'/mn.jpg';
-if(!getimagesize($img_path)){
-    echo '图片格式不正确';exit;
-}
-$content=base64_encode(file_get_contents($img_path));
-$json['content']=$content;
-$json['app_id']=$app_id;
 $data=rsaEncrypt(json_encode($json));
 //数据加密
 $api_param=[];
@@ -71,7 +62,7 @@ $api_param['sign']=$sign;
 //创建新的curl资源
 $ch=curl_init();
 //设置url和相应的选项
-curl_setopt($ch,CURLOPT_URL,$login_url);
+curl_setopt($ch,CURLOPT_URL,$url);
 curl_setopt($ch,CURLOPT_POST,1);
 curl_setopt($ch,CURLOPT_POSTFIELDS,$api_param);
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
@@ -82,7 +73,7 @@ if(curl_errno($ch)){
     var_dump(curl_error());
 }
 var_dump($res);
-echo "<hr />";
+echo "<hr />";exit;
 $api_arr=json_decode($res,true);
 //var_dump($api_arr);
 //echo '<pre />';
